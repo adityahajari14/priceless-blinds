@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ContactForm } from "../../components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact – Priceless Blinds - Priceless Blinds",
@@ -7,10 +8,6 @@ export const metadata: Metadata = {
     "Contact Priceless Blinds for wooden blinds, vertical blinds, Integral Blinds, Conservatory Blinds, Metal Venetian blinds, all over Dublin, Ireland.",
 };
 
-const web3FormsAccessKey =
-  process.env.WEB3FORMS_ACCESS_KEY ??
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ??
-  "YOUR_ACCESS_KEY_HERE";
 const addressLines = [
   "Stadium Business Park",
   "Unit 9, The Business Centre",
@@ -42,47 +39,6 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
     <h2 className="border-b-2 border-[rgba(0,24,37,0.2)] pb-2.5 text-[30px] font-bold leading-[40px] text-[#001825] md:text-[40px] md:leading-[48px]">
       {children}
     </h2>
-  );
-}
-
-function Field({
-  as = "input",
-  name,
-  type = "text",
-  placeholder,
-  required = true,
-}: {
-  as?: "input" | "textarea";
-  name: string;
-  type?: string;
-  placeholder: string;
-  required?: boolean;
-}) {
-  const className =
-    "w-full rounded-[2px] border border-[rgba(199,198,206,0.7)] bg-white px-4 py-3.5 text-base leading-6 text-[#001825] outline-none placeholder:text-[#747882] focus:border-[#00aeef] focus:ring-2 focus:ring-[rgba(0,174,239,0.12)]";
-
-  if (as === "textarea") {
-    return (
-      <textarea
-        name={name}
-        placeholder={placeholder}
-        aria-label={placeholder}
-        rows={6}
-        required={required}
-        className={`${className} min-h-[160px] resize-y`}
-      />
-    );
-  }
-
-  return (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      aria-label={placeholder}
-      required={required}
-      className={className}
-    />
   );
 }
 
@@ -155,51 +111,7 @@ export default function ContactPage() {
         <div className="mx-auto w-full max-w-[920px] rounded-lg border border-[rgba(199,198,206,0.3)] bg-white p-7 shadow-[0_10px_28px_rgba(14,20,43,0.05)] md:p-10">
           <SectionHeading>Send a message</SectionHeading>
 
-          <form
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            className="mt-8 grid gap-4"
-          >
-            <input
-              type="hidden"
-              name="access_key"
-              value={web3FormsAccessKey}
-            />
-            <input
-              type="hidden"
-              name="subject"
-              value="New contact message from Priceless Blinds"
-            />
-            <input type="hidden" name="from_name" value="Priceless Blinds" />
-            <input
-              type="hidden"
-              name="redirect"
-              value="https://web3forms.com/success"
-            />
-            <input
-              type="checkbox"
-              name="botcheck"
-              tabIndex={-1}
-              autoComplete="off"
-              className="hidden"
-            />
-            <div className="grid gap-4 md:grid-cols-2">
-              <Field name="name" placeholder="Name" />
-              <Field name="email" type="email" placeholder="Email" />
-            </div>
-            <Field name="phone" type="tel" placeholder="Phone" />
-            <Field
-              as="textarea"
-              name="message"
-              placeholder="How can we help?"
-            />
-            <button
-              type="submit"
-              className="mt-2 flex min-h-12 w-full items-center justify-center rounded-[2px] bg-[#001825] px-8 text-center text-sm font-semibold leading-5 tracking-[0.7px] text-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:bg-[#00aeef] md:w-auto md:justify-self-start"
-            >
-              SEND MESSAGE
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </main>

@@ -1,0 +1,12 @@
+
+> priceless-blinds@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.189.232.92:3000
+- Environments: .env
+✓ Ready in 470ms
+
+ GET /contact 200 in 917ms (next.js: 161ms, application-code: 755ms)
+[?25h
