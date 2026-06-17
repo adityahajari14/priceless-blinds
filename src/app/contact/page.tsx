@@ -11,11 +11,17 @@ const web3FormsAccessKey =
   process.env.WEB3FORMS_ACCESS_KEY ??
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ??
   "YOUR_ACCESS_KEY_HERE";
-const mapAddress =
-  "Moy-Elta 10 Boroimhe Birches Fosterstown North Swords, Co. Dublin, K67 HX03, Ireland";
+const addressLines = [
+  "Stadium Business Park",
+  "Unit 9, The Business Centre",
+  "Ballycoolin Road",
+  "Dublin 11, D11 FT22, Ireland",
+];
+const mapAddress = addressLines.join(", ");
+const mapPlaceName = "Priceless Blinds Dublin";
 const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
-  mapAddress,
-)}&ll=53.439947,-6.238518&z=14&t=m&hl=en&gl=US&output=embed`;
+  mapPlaceName,
+)}&ll=53.4000942,-6.3406409&z=19&t=m&hl=en&gl=IE&output=embed`;
 
 function LocationIcon() {
   return (
@@ -111,7 +117,7 @@ export default function ContactPage() {
         <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 overflow-hidden bg-[#dff4fb] lg:grid-cols-2">
           <div className="relative min-h-[360px] bg-[#d5eef7] md:min-h-[420px]">
             <iframe
-              title="Priceless Blinds Ireland address map"
+              title={`${mapPlaceName} address map: ${mapAddress}`}
               src={mapEmbedUrl}
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
@@ -129,9 +135,9 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-5 text-base leading-8 text-[#263947]">
-                <p>Moy-Elta</p>
-                <p>10 Boroimhe Birches, Fosterstown North, Swords,</p>
-                <p>Co. Dublin, K67 HX03, Ireland</p>
+                {addressLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
 
               <a
