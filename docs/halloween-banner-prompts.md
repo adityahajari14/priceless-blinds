@@ -1,0 +1,19 @@
+# Halloween carousel images
+
+The homepage uses three seasonal photographs when `HALLOWEEN_THEME` is enabled.
+
+| Slide | Saved asset | Source resolution | Origin |
+| --- | --- | --- | --- |
+| Made-to-measure blinds | `public/home/hero-halloween.webp` | 2752 × 1536 | Existing project image |
+| Wooden blinds | `public/home/hero-halloween-wooden.webp` | 1679 × 937 | Built-in imagegen tool |
+| Blinds for every style | `public/home/hero-halloween-roman.webp` | 1676 × 938 | Built-in imagegen tool |
+
+Generated assets retain their original resolution and use WebP quality 95; the carousel requests Next.js image quality 90. Originals remain in the imagegen output directory. No assets were upscaled. Image positions favor the windows and seasonal decorations on narrow screens. Responsive image sizes account for the wider source needed by tall mobile `object-cover` crops.
+
+## Wooden blinds prompt
+
+Use case: ads-marketing. Asset type: high-resolution photographic background for a premium Dublin blinds company homepage carousel, landscape 16:9, ideally 2752x1536 or larger. Primary request: photorealistic Halloween-season interior photograph, exceptionally crisp and high quality with realistic wood grain, fabric texture, correct architectural perspective and window treatment geometry. Scene: an elegant contemporary Irish living room at dusk, warm oak Venetian wooden blinds across large windows on the right, an oatmeal armchair and small dark wood side table. Tasteful Halloween styling: two real orange pumpkins, one subtly carved jack-o-lantern glowing gently on the side table, amber candle lantern, small autumn foliage arrangement, a couple of restrained black paper bat decorations attached to the window. Windows, slats and wooden blinds must be clearly visible and the hero of the composition. Lighting: warm amber interior light with cool dusk through the slats, inviting and sophisticated, well exposed rather than dark horror. Composition: wide room view, large quiet dark taupe wall/negative space across the left 45 percent for website headline overlay, key blinds and Halloween details center-right, important pumpkins visible within central 60 percent for mobile cropping. No text, no logos, no watermark, no border, no collage, no people. An upscale interior photography campaign image, tasteful and convincingly Halloween.
+
+## Roman blinds prompt
+
+Use case: ads-marketing. Asset type: premium window blinds website hero photograph, very high resolution landscape 16:9, ideally 2752x1536 or larger. Primary request: photorealistic contemporary Irish dining and living space decorated tastefully for Halloween, high-end architectural interior photography with extremely sharp natural detail, realistic linen texture, refined materials, clean believable window geometry. Subject: beautifully fitted pale warm grey linen Roman blinds with precise folds on tall windows in the right half of frame; elegant dark oak console below the windows, two orange pumpkins with one small softly glowing carved jack-o-lantern, a few smaller cream pumpkins, brass candle lanterns, subtle black paper bats on the glass, autumn eucalyptus branches in a ceramic vase, upholstered dining chair in the foreground. Clearly recognisable Halloween accents while the window blinds remain the main product. Mood: cozy warm amber light, cool autumn dusk through the window, sophisticated and welcoming, not horror. Composition: wide room photograph, quiet deep taupe wall across the left 40 percent kept uncluttered for a large white website headline overlay, primary Roman blinds and Halloween details placed center-right, composition also useful for a centered vertical mobile crop. High visual fidelity, properly exposed and rich, not excessively dark. No text, no logo, no watermark, no people, no illustration, no collage, no border.
