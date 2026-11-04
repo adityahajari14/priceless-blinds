@@ -1,6 +1,6 @@
 # Halloween carousel images
 
-The homepage uses three seasonal photographs when `HALLOWEEN_THEME` is enabled.
+Archived campaign: the Halloween theme has been retired. These photographs are no longer used by the website. The current campaign and rollback instructions are in [black-friday-sale.md](black-friday-sale.md).
 
 | Slide | Saved asset | Source resolution | Origin |
 | --- | --- | --- | --- |

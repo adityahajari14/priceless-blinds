@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HALLOWEEN_THEME } from "../config/seasonal";
-import { PumpkinIcon } from "./halloween-decor";
+import { BLACK_FRIDAY_THEME } from "../config/seasonal";
+import { SaleTagIcon } from "./black-friday-decor";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -100,10 +100,15 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-[rgba(199,198,206,0.3)] px-5 pb-6 pt-[25px] md:px-12">
-        {HALLOWEEN_THEME ? (
+        {BLACK_FRIDAY_THEME ? (
           <p className="mb-2 flex items-center justify-center gap-2 text-center text-xs font-semibold leading-4 text-[#001825]">
-            <PumpkinIcon className="h-4 w-4 shrink-0" />
-            <span>Happy Halloween from the Priceless Blinds team</span>
+            <SaleTagIcon className="h-4 w-4 shrink-0 text-[#806026]" />
+            <span>
+              Black Friday Sale at Priceless Blinds —{" "}
+              <Link href="/contact" className="underline underline-offset-2 hover:text-[#806026]">
+                book your free consultation
+              </Link>
+            </span>
           </p>
         ) : null}
         <p className="text-center text-xs font-normal leading-4 text-[#46464d]">

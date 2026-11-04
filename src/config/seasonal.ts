@@ -1,8 +1,9 @@
-// Manual switch for the Halloween touches (greeting bar, hero decorations,
-// footer line). Set to false to return the site to its normal look.
-export const HALLOWEEN_THEME: boolean = true;
+// Manual switch for the Black Friday campaign (announcement bar, hero images,
+// sale copy, accents, and footer line). Set to false and rebuild/redeploy to
+// restore the regular site. See docs/black-friday-sale.md for rollback steps.
+export const BLACK_FRIDAY_THEME: boolean = true;
 
 // Seasonal backgrounds for all three home carousel slides.
-export const HALLOWEEN_HERO_IMAGE = "/home/hero-halloween.webp";
-export const HALLOWEEN_WOODEN_HERO_IMAGE = "/home/hero-halloween-wooden.webp";
-export const HALLOWEEN_ROMAN_HERO_IMAGE = "/home/hero-halloween-roman.webp";
+export const BLACK_FRIDAY_HERO_IMAGE = "/home/hero-black-friday.webp";
+export const BLACK_FRIDAY_WOODEN_HERO_IMAGE = "/home/hero-black-friday-wooden.webp";
+export const BLACK_FRIDAY_ROMAN_HERO_IMAGE = "/home/hero-black-friday-roman.webp";

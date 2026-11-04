@@ -4,30 +4,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
-  HALLOWEEN_HERO_IMAGE,
-  HALLOWEEN_ROMAN_HERO_IMAGE,
-  HALLOWEEN_THEME,
-  HALLOWEEN_WOODEN_HERO_IMAGE,
+  BLACK_FRIDAY_HERO_IMAGE,
+  BLACK_FRIDAY_ROMAN_HERO_IMAGE,
+  BLACK_FRIDAY_THEME,
+  BLACK_FRIDAY_WOODEN_HERO_IMAGE,
 } from "../../config/seasonal";
-import { HeroHalloweenDecor, PumpkinIcon } from "../halloween-decor";
+import { HeroBlackFridayDecor, SaleTagIcon } from "../black-friday-decor";
 
 // Keep each banner's image, copy, and collection link together for easy updates.
 const slides = [
   {
-    image: HALLOWEEN_THEME ? HALLOWEEN_HERO_IMAGE : "/home/home-img1.webp",
-    imagePosition: HALLOWEEN_THEME ? "75% center" : "center",
-    title: "Quality Window Blinds",
-    subtitle: "Dublin, Ireland",
-    description:
-      "Enhance your home or office with local made-to-measure blinds, crafted in a wide choice of colours, textures, and finishes, then professionally measured and fitted across Dublin.",
+    image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_HERO_IMAGE : "/home/home-img1.webp",
+    imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "center",
+    title: BLACK_FRIDAY_THEME ? "Black Friday Sale." : "Quality Window Blinds",
+    subtitle: BLACK_FRIDAY_THEME ? "Made for Your Home." : "Dublin, Ireland",
+    description: BLACK_FRIDAY_THEME
+      ? "Discover your next home upgrade this Black Friday. Explore made-to-measure blinds in beautiful colours, textures, and finishes, with free measuring and fitting across Dublin."
+      : "Enhance your home or office with local made-to-measure blinds, crafted in a wide choice of colours, textures, and finishes, then professionally measured and fitted across Dublin.",
     href: "/ireland-blinds-quality-blinds-in-dublin",
     linkLabel: "Explore Collections",
     label: "Made-to-measure blinds",
   },
   {
-    image: HALLOWEEN_THEME ? HALLOWEEN_WOODEN_HERO_IMAGE : "/home/hero-bg.webp",
-    imagePosition: HALLOWEEN_THEME ? "75% center" : "65% center",
-    title: "Natural Warmth.",
+    image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_WOODEN_HERO_IMAGE : "/home/hero-bg.webp",
+    imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "65% center",
+    title: BLACK_FRIDAY_THEME ? "Black Friday." : "Natural Warmth.",
     subtitle: "Timeless Wooden Blinds.",
     description:
       "Bring warmth and character to your space with made-to-measure wooden blinds. Explore beautiful finishes with flexible light control, expertly measured and fitted for your windows.",
@@ -36,10 +37,10 @@ const slides = [
     label: "Wooden blinds",
   },
   {
-    image: HALLOWEEN_THEME ? HALLOWEEN_ROMAN_HERO_IMAGE : "/home/home-img2.webp",
-    imagePosition: HALLOWEEN_THEME ? "75% center" : "60% center",
-    title: "Your Style.",
-    subtitle: "Your Perfect Fit.",
+    image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_ROMAN_HERO_IMAGE : "/home/home-img2.webp",
+    imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "60% center",
+    title: BLACK_FRIDAY_THEME ? "Black Friday." : "Your Style.",
+    subtitle: BLACK_FRIDAY_THEME ? "Your Style. Your Fit." : "Your Perfect Fit.",
     description:
       "From contemporary roller blinds to soft Roman fabrics, discover colours, textures, and styles to suit every room. Let our Dublin team help you find the right fit for your home.",
     href: "/ireland-blinds-quality-blinds-in-dublin",
@@ -182,21 +183,24 @@ export function HeroSection() {
               />
               <div
                 className={
-                  HALLOWEEN_THEME
-                    ? "absolute inset-0 bg-gradient-to-r from-[rgba(20,12,30,0.78)] via-[rgba(20,12,30,0.4)] to-[rgba(20,12,30,0.08)]"
+                  BLACK_FRIDAY_THEME
+                    ? "absolute inset-0 bg-[#0f0f0f]/65 md:bg-transparent md:bg-gradient-to-r md:from-[rgba(15,15,15,0.86)] md:via-[rgba(15,15,15,0.56)] md:to-[rgba(15,15,15,0.16)]"
                     : "absolute inset-0 bg-gradient-to-r from-[rgba(0,24,37,0.82)] via-[rgba(0,24,37,0.62)] to-[rgba(0,24,37,0.2)]"
                 }
               />
 
               <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-5 pb-28 pt-12 text-center md:items-start md:px-12 md:pb-28 md:pt-20 md:text-left">
                 <div className="pb-7">
-                  <div className="flex items-center rounded-[2px] border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-[17px] py-[9px] backdrop-blur-[2px]">
-                    {HALLOWEEN_THEME ? (
-                      <PumpkinIcon className="h-4 w-4 shrink-0" />
+                  <div className="flex max-w-full items-center rounded-[2px] border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-[17px] py-[9px] backdrop-blur-[2px]">
+                    {BLACK_FRIDAY_THEME ? (
+                      <SaleTagIcon className="h-4 w-4 shrink-0 text-[#e8c982]" />
                     ) : (
                       <BadgeIcon />
                     )}
                     <span className="pl-2 text-xs font-bold uppercase leading-4 tracking-[0.6px] text-white">
+                      {BLACK_FRIDAY_THEME ? (
+                        <span className="mb-1 block text-[#e8c982]">Black Friday Sale</span>
+                      ) : null}
                       Free Measuring &amp; Fitting in Dublin Ireland
                     </span>
                   </div>
@@ -218,10 +222,10 @@ export function HeroSection() {
                   <Link
                     href="/contact"
                     className={[
-                      "flex min-h-12 items-center justify-center rounded-[2px] px-7 text-center text-sm font-semibold leading-5 tracking-[0.7px] text-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]",
-                      HALLOWEEN_THEME
-                        ? "bg-[#e8590c] hover:bg-[#d9480f] hover:shadow-[0_12px_24px_rgba(232,89,12,0.28)]"
-                        : "bg-[#00aeef] hover:bg-[#009bd6] hover:shadow-[0_12px_24px_rgba(0,174,239,0.22)]",
+                      "flex min-h-12 items-center justify-center rounded-[2px] px-7 text-center text-sm font-semibold leading-5 tracking-[0.7px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]",
+                      BLACK_FRIDAY_THEME
+                        ? "bg-[#e8c982] text-[#151515] hover:bg-[#f1dca9] hover:shadow-[0_12px_24px_rgba(232,201,130,0.24)]"
+                        : "bg-[#00aeef] text-white hover:bg-[#009bd6] hover:shadow-[0_12px_24px_rgba(0,174,239,0.22)]",
                     ].join(" ")}
                   >
                     BOOK A FREE CONSULTATION
@@ -239,7 +243,7 @@ export function HeroSection() {
         })}
       </div>
 
-      {HALLOWEEN_THEME ? <div className="pointer-events-none absolute inset-0 z-20"><HeroHalloweenDecor /></div> : null}
+      {BLACK_FRIDAY_THEME ? <div className="pointer-events-none absolute inset-0 z-20"><HeroBlackFridayDecor /></div> : null}
 
       <div className="absolute inset-x-0 bottom-6 z-30 mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-5 md:px-12">
         <div className="flex items-center" role="group" aria-label="Choose a banner">
