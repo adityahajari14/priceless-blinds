@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BLACK_FRIDAY_THEME } from "../config/seasonal";
+import { BLACK_FRIDAY_QUOTE_HREF, BLACK_FRIDAY_THEME } from "../config/seasonal";
 import { SaleTagIcon } from "./black-friday-decor";
 
 const quickLinks = [
@@ -104,9 +104,9 @@ export function SiteFooter() {
           <p className="mb-2 flex items-center justify-center gap-2 text-center text-xs font-semibold leading-4 text-[#001825]">
             <SaleTagIcon className="h-4 w-4 shrink-0 text-[#806026]" />
             <span>
-              Black Friday Sale at Priceless Blinds —{" "}
-              <Link href="/contact" className="underline underline-offset-2 hover:text-[#806026]">
-                book your free consultation
+              Start your Black Friday home refresh —{" "}
+              <Link href={BLACK_FRIDAY_QUOTE_HREF} className="underline underline-offset-2 hover:text-[#806026]">
+                get my free quote
               </Link>
             </span>
           </p>

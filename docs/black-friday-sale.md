@@ -2,7 +2,21 @@
 
 The Black Friday campaign replaces the retired Halloween theme. It uses charcoal, white, and gold accents, a site-wide announcement bar, three homepage carousel photographs, sale messaging, and a footer consultation link.
 
-The campaign uses general **Black Friday Sale** wording. No percentage discount, coupon, countdown, or start/end date has been configured. All consultation links go to `/contact`; collection links keep their existing destinations.
+The campaign uses **Black Friday Sale** wording with benefit-led product headlines, short descriptions, and a consistent **GET MY FREE QUOTE** call to action. Quote links go directly to `/contact#quote`; collection links keep their existing destinations. Existing free quote, measuring, and fitting services are promoted as reassurance, not as exclusive Black Friday discounts.
+
+No percentage discount, coupon, countdown, or start/end date has been configured. Before advertising a specific offer, confirm the discount or bundle, eligible products, any minimum order or exclusions, and the real end date. Add those details consistently to the announcement, hero copy, quote page, and terms when supplied.
+
+## Copy and customer journey
+
+| Banner | Headline | Supporting benefit |
+| --- | --- | --- |
+| Made-to-measure blinds | Refresh Your Home. Start This Black Friday. | A beautiful finish with expert measuring and fitting |
+| Wooden blinds | Bring Home the Warmth. Choose Wooden Blinds. | Rich finishes and flexible light control |
+| Every style | A Fresh Look. For Every Room. | Roman fabrics and roller styles tailored to each window |
+
+The announcement, desktop/mobile header buttons, hero buttons, footer, and lower contact panel point to the quote form. During the campaign, the form appears before the address map. Its button and success message explain that the customer is requesting a quote, and quote emails use a Black Friday subject so the team can recognise campaign enquiries.
+
+The lower contact panel explains the three steps from enquiry to fitted blinds, replacing the newsletter signup while the campaign is active. Turning off the switch restores the regular newsletter panel, consultation wording, original contact-page order, form copy, and email subject.
 
 ## Campaign switch and rollback
 
@@ -17,17 +31,21 @@ To end the campaign:
 1. Set `BLACK_FRIDAY_THEME` to `false`.
 2. Run `npm run lint` and `npm run build`.
 3. Redeploy the updated build using the website's normal deployment process. For a self-hosted server, restart it with the new build.
-4. Confirm the announcement bar and footer sale line are gone, all three homepage slides use the regular photographs and copy, and the primary hero buttons are blue again. Check both a narrow mobile viewport and desktop.
+4. Confirm the announcement bar and footer sale line are gone, all three homepage slides use the regular photographs and copy, and the primary hero/header buttons are blue again. Confirm regular consultation buttons, newsletter panel, contact-page order, and form wording are restored. Check both a narrow mobile viewport and desktop.
 
 This restores the regular site, including `/home/home-img1.webp`, `/home/hero-bg.webp`, and `/home/home-img2.webp`. It does not re-enable Halloween. To activate Black Friday again, set the switch to `true` and rebuild/redeploy. This is a source-code switch, not an `.env` setting, and there is no automatic expiry.
 
 ## Files
 
-- `src/config/seasonal.ts`: switch and campaign image paths.
+- `src/config/seasonal.ts`: switch, campaign image paths, shared quote URL, and CTA label.
 - `src/components/black-friday-decor.tsx`: announcement bar, sale tag icon, and decorative hero corners.
 - `src/app/layout.tsx`: conditional site-wide announcement.
 - `src/components/home/hero-section.tsx`: conditional photographs, sale headlines, badge, overlay, gold buttons, and decorations. Existing rotation, keyboard navigation, touch controls, focus/hover pause, and reduced-motion support are retained.
 - `src/components/site-footer.tsx`: conditional sale line and consultation link.
+- `src/components/site-header.tsx`: desktop and mobile quote buttons.
+- `src/components/contact-section.tsx`: campaign contact copy and three-step explanation.
+- `src/app/contact/page.tsx`: quote form anchor, campaign copy, and conditional section order.
+- `src/components/contact-form.tsx`: campaign quote button, message prompt, success wording, and email subject.
 
 Retired Halloween photographs remain as unused archived assets; the Halloween component and configuration have been removed. Historical image prompts are in `docs/halloween-banner-prompts.md`.
 

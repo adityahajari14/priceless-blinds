@@ -4,6 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  BLACK_FRIDAY_CTA_LABEL,
+  BLACK_FRIDAY_QUOTE_HREF,
+  BLACK_FRIDAY_THEME,
+} from "../config/seasonal";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -232,10 +237,10 @@ export function SiteHeader() {
             </a>
 
             <Link
-              href="/contact"
-              className="flex h-11 items-center justify-center rounded-[2px] bg-[#00aeef] px-6 text-center text-sm font-semibold leading-5 tracking-[0.7px] text-white shadow-[0_4px_10px_rgba(14,20,43,0.06)] hover:bg-[#009bd6] hover:shadow-[0_8px_18px_rgba(0,174,239,0.22)]"
+              href={BLACK_FRIDAY_THEME ? BLACK_FRIDAY_QUOTE_HREF : "/contact"}
+              className={`flex h-11 items-center justify-center rounded-[2px] px-6 text-center text-sm font-semibold leading-5 tracking-[0.7px] shadow-[0_4px_10px_rgba(14,20,43,0.06)] ${BLACK_FRIDAY_THEME ? "bg-[#e8c982] text-[#151515] hover:bg-[#f1dca9]" : "bg-[#00aeef] text-white hover:bg-[#009bd6] hover:shadow-[0_8px_18px_rgba(0,174,239,0.22)]"}`}
             >
-              BOOK CONSULTATION
+              {BLACK_FRIDAY_THEME ? BLACK_FRIDAY_CTA_LABEL : "BOOK CONSULTATION"}
             </Link>
           </div>
 
@@ -313,11 +318,11 @@ export function SiteHeader() {
               </a>
 
               <Link
-                href="/contact"
+                href={BLACK_FRIDAY_THEME ? BLACK_FRIDAY_QUOTE_HREF : "/contact"}
                 onClick={closeMenu}
-                className="flex h-11 items-center justify-center rounded-[2px] bg-[#00aeef] px-5 text-center text-sm font-semibold leading-5 tracking-[0.7px] text-white shadow-[0_8px_18px_rgba(0,174,239,0.18)]"
+                className={`flex h-11 items-center justify-center rounded-[2px] px-5 text-center text-sm font-semibold leading-5 tracking-[0.7px] ${BLACK_FRIDAY_THEME ? "bg-[#e8c982] text-[#151515] hover:bg-[#f1dca9]" : "bg-[#00aeef] text-white shadow-[0_8px_18px_rgba(0,174,239,0.18)]"}`}
               >
-                BOOK CONSULTATION
+                {BLACK_FRIDAY_THEME ? BLACK_FRIDAY_CTA_LABEL : "BOOK CONSULTATION"}
               </Link>
             </div>
           </div>

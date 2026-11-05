@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "../../components/contact-form";
+import { BLACK_FRIDAY_THEME } from "../../config/seasonal";
 
 export const metadata: Metadata = {
   title: "Contact – Priceless Blinds - Priceless Blinds",
@@ -43,6 +44,21 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function ContactPage() {
+  const quoteSection = (
+    <section id="quote" className="scroll-mt-6 border-t border-[rgba(199,198,206,0.3)] bg-[#f8fafc] px-5 py-14 md:px-12 md:py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-[920px] rounded-lg border border-[rgba(199,198,206,0.3)] bg-white p-7 shadow-[0_10px_28px_rgba(14,20,43,0.05)] md:p-10">
+        <SectionHeading>{BLACK_FRIDAY_THEME ? "Get my free quote" : "Send a message"}</SectionHeading>
+        {BLACK_FRIDAY_THEME ? (
+          <p className="mt-4 text-base leading-7 text-[#46464d]">
+            Tell us what you have in mind. Our Dublin team will help you choose
+            your blinds and prepare your free quote, with free measuring and fitting.
+          </p>
+        ) : null}
+        <ContactForm />
+      </div>
+    </section>
+  );
+
   return (
     <main>
       <section className="relative flex min-h-[360px] items-center justify-center overflow-hidden bg-[#001825] px-5 py-16 md:min-h-[440px] md:px-12 md:py-20">
@@ -57,17 +73,19 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[rgba(0,24,37,0.66)]" />
 
         <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center text-center">
-          <p className="mb-4 text-sm font-bold uppercase leading-5 tracking-[1.4px] text-[#00aeef]">
-            SEND US A MESSAGE
+          <p className={`mb-4 text-sm font-bold uppercase leading-5 tracking-[1.4px] ${BLACK_FRIDAY_THEME ? "text-[#e8c982]" : "text-[#00aeef]"}`}>
+            {BLACK_FRIDAY_THEME ? "BLACK FRIDAY SALE" : "SEND US A MESSAGE"}
           </p>
           <h1 className="text-[40px] font-bold leading-[50px] text-white md:text-[56px] md:leading-[64px]">
-            Contact – Priceless Blinds
+            {BLACK_FRIDAY_THEME ? "Your Home Refresh Starts Here." : "Contact – Priceless Blinds"}
           </h1>
           <p className="mt-5 text-[16px] leading-7 text-[rgba(255,255,255,0.88)] md:text-lg">
-            Need some help?
+            {BLACK_FRIDAY_THEME ? "Your style. Your windows. A free quote made for you." : "Need some help?"}
           </p>
         </div>
       </section>
+
+      {BLACK_FRIDAY_THEME ? quoteSection : null}
 
       <section className="border-t border-[rgba(199,198,206,0.3)] bg-white px-5 py-14 md:px-12 md:py-20 lg:py-24">
         <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 overflow-hidden bg-[#dff4fb] lg:grid-cols-2">
@@ -107,13 +125,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-[rgba(199,198,206,0.3)] bg-[#f8fafc] px-5 py-14 md:px-12 md:py-20 lg:py-24">
-        <div className="mx-auto w-full max-w-[920px] rounded-lg border border-[rgba(199,198,206,0.3)] bg-white p-7 shadow-[0_10px_28px_rgba(14,20,43,0.05)] md:p-10">
-          <SectionHeading>Send a message</SectionHeading>
-
-          <ContactForm />
-        </div>
-      </section>
+      {!BLACK_FRIDAY_THEME ? quoteSection : null}
     </main>
   );
 }

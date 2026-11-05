@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { BLACK_FRIDAY_CTA_LABEL, BLACK_FRIDAY_THEME } from "../config/seasonal";
 
 const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
@@ -66,7 +67,12 @@ export function ContactForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.set("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.set("subject", "New contact message from Priceless Blinds");
+    formData.set(
+      "subject",
+      BLACK_FRIDAY_THEME
+        ? "Black Friday quote request from Priceless Blinds"
+        : "New contact message from Priceless Blinds",
+    );
     formData.set("from_name", "Priceless Blinds");
 
     try {
@@ -83,7 +89,9 @@ export function ContactForm() {
       form.reset();
       setSubmitState({
         type: "success",
-        message: "Thanks, your message has been sent.",
+        message: BLACK_FRIDAY_THEME
+          ? "Thanks, your quote request has been sent. Our team will be in touch."
+          : "Thanks, your message has been sent.",
       });
     } catch {
       setSubmitState({
@@ -109,7 +117,11 @@ export function ContactForm() {
         <Field name="email" type="email" placeholder="Email" />
       </div>
       <Field name="phone" type="tel" placeholder="Phone" />
-      <Field as="textarea" name="message" placeholder="How can we help?" />
+      <Field
+        as="textarea"
+        name="message"
+        placeholder={BLACK_FRIDAY_THEME ? "Tell us about your windows, rooms or preferred blinds" : "How can we help?"}
+      />
 
       {submitState.message ? (
         <p
@@ -125,9 +137,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 flex min-h-12 w-full items-center justify-center rounded-[2px] bg-[#001825] px-8 text-center text-sm font-semibold leading-5 tracking-[0.7px] text-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:bg-[#00aeef] disabled:cursor-not-allowed disabled:opacity-70 md:w-auto md:justify-self-start"
+        className={`mt-2 flex min-h-12 w-full items-center justify-center rounded-[2px] px-8 text-center text-sm font-semibold leading-5 tracking-[0.7px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] disabled:cursor-not-allowed disabled:opacity-70 md:w-auto md:justify-self-start ${BLACK_FRIDAY_THEME ? "bg-[#e8c982] text-[#151515] hover:bg-[#f1dca9]" : "bg-[#001825] text-white hover:bg-[#00aeef]"}`}
       >
-        {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+        {isSubmitting ? "SENDING..." : BLACK_FRIDAY_THEME ? BLACK_FRIDAY_CTA_LABEL : "SEND MESSAGE"}
       </button>
     </form>
   );

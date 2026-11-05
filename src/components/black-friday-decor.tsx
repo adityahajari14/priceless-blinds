@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BLACK_FRIDAY_QUOTE_HREF } from "../config/seasonal";
 
 export function SaleTagIcon({ className }: { className?: string }) {
   return (
@@ -23,12 +24,12 @@ export function BlackFridayBar() {
     <div className="border-b border-[#d9b76c]/30 bg-[#151515] px-5 py-2 md:px-12">
       <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 text-center text-xs font-semibold leading-5 tracking-[0.35px] text-white md:text-[13px]">
         <SaleTagIcon className="h-4 w-4 shrink-0 text-[#e8c982]" />
-        <span>Black Friday Sale at Priceless Blinds</span>
+        <span>Black Friday Sale · Make your home feel new</span>
         <Link
-          href="/contact"
+          href={BLACK_FRIDAY_QUOTE_HREF}
           className="text-[#e8c982] underline underline-offset-2 hover:text-white"
         >
-          Book a free consultation
+          Get my free quote
         </Link>
       </p>
     </div>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   BLACK_FRIDAY_HERO_IMAGE,
+  BLACK_FRIDAY_CTA_LABEL,
+  BLACK_FRIDAY_QUOTE_HREF,
   BLACK_FRIDAY_ROMAN_HERO_IMAGE,
   BLACK_FRIDAY_THEME,
   BLACK_FRIDAY_WOODEN_HERO_IMAGE,
@@ -16,10 +18,10 @@ const slides = [
   {
     image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_HERO_IMAGE : "/home/home-img1.webp",
     imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "center",
-    title: BLACK_FRIDAY_THEME ? "Black Friday Sale." : "Quality Window Blinds",
-    subtitle: BLACK_FRIDAY_THEME ? "Made for Your Home." : "Dublin, Ireland",
+    title: BLACK_FRIDAY_THEME ? "Refresh Your Home." : "Quality Window Blinds",
+    subtitle: BLACK_FRIDAY_THEME ? "Start This Black Friday." : "Dublin, Ireland",
     description: BLACK_FRIDAY_THEME
-      ? "Discover your next home upgrade this Black Friday. Explore made-to-measure blinds in beautiful colours, textures, and finishes, with free measuring and fitting across Dublin."
+      ? "Give your windows the finish they deserve. Choose beautiful made-to-measure blinds and let our Dublin team take care of the measuring and fitting. Get your free quote today."
       : "Enhance your home or office with local made-to-measure blinds, crafted in a wide choice of colours, textures, and finishes, then professionally measured and fitted across Dublin.",
     href: "/ireland-blinds-quality-blinds-in-dublin",
     linkLabel: "Explore Collections",
@@ -28,10 +30,11 @@ const slides = [
   {
     image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_WOODEN_HERO_IMAGE : "/home/hero-bg.webp",
     imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "65% center",
-    title: BLACK_FRIDAY_THEME ? "Black Friday." : "Natural Warmth.",
-    subtitle: "Timeless Wooden Blinds.",
-    description:
-      "Bring warmth and character to your space with made-to-measure wooden blinds. Explore beautiful finishes with flexible light control, expertly measured and fitted for your windows.",
+    title: BLACK_FRIDAY_THEME ? "Bring Home the Warmth." : "Natural Warmth.",
+    subtitle: BLACK_FRIDAY_THEME ? "Choose Wooden Blinds." : "Timeless Wooden Blinds.",
+    description: BLACK_FRIDAY_THEME
+      ? "Rich wood finishes. Light just how you like it. Bring lasting character to your favourite room this Black Friday, with wooden blinds made to fit your windows."
+      : "Bring warmth and character to your space with made-to-measure wooden blinds. Explore beautiful finishes with flexible light control, expertly measured and fitted for your windows.",
     href: "/wooden-blinds-in-dublin-ireland",
     linkLabel: "Explore Wooden Blinds",
     label: "Wooden blinds",
@@ -39,10 +42,11 @@ const slides = [
   {
     image: BLACK_FRIDAY_THEME ? BLACK_FRIDAY_ROMAN_HERO_IMAGE : "/home/home-img2.webp",
     imagePosition: BLACK_FRIDAY_THEME ? "75% center" : "60% center",
-    title: BLACK_FRIDAY_THEME ? "Black Friday." : "Your Style.",
-    subtitle: BLACK_FRIDAY_THEME ? "Your Style. Your Fit." : "Your Perfect Fit.",
-    description:
-      "From contemporary roller blinds to soft Roman fabrics, discover colours, textures, and styles to suit every room. Let our Dublin team help you find the right fit for your home.",
+    title: BLACK_FRIDAY_THEME ? "A Fresh Look." : "Your Style.",
+    subtitle: BLACK_FRIDAY_THEME ? "For Every Room." : "Your Perfect Fit.",
+    description: BLACK_FRIDAY_THEME
+      ? "Soft Roman fabrics or sleek roller blinds: find the look that feels like home. Start your Black Friday refresh with expert advice and a free quote tailored to your windows."
+      : "From contemporary roller blinds to soft Roman fabrics, discover colours, textures, and styles to suit every room. Let our Dublin team help you find the right fit for your home.",
     href: "/ireland-blinds-quality-blinds-in-dublin",
     linkLabel: "Find Your Blinds",
     label: "Blinds for every style",
@@ -199,9 +203,10 @@ export function HeroSection() {
                     )}
                     <span className="pl-2 text-xs font-bold uppercase leading-4 tracking-[0.6px] text-white">
                       {BLACK_FRIDAY_THEME ? (
-                        <span className="mb-1 block text-[#e8c982]">Black Friday Sale</span>
-                      ) : null}
-                      Free Measuring &amp; Fitting in Dublin Ireland
+                        <span className="text-[#e8c982]">Black Friday Sale</span>
+                      ) : (
+                        "Free Measuring & Fitting in Dublin Ireland"
+                      )}
                     </span>
                   </div>
                 </div>
@@ -220,7 +225,7 @@ export function HeroSection() {
 
                 <div className="flex w-full max-w-[360px] flex-col gap-4 sm:w-auto sm:max-w-none sm:flex-row">
                   <Link
-                    href="/contact"
+                    href={BLACK_FRIDAY_THEME ? BLACK_FRIDAY_QUOTE_HREF : "/contact"}
                     className={[
                       "flex min-h-12 items-center justify-center rounded-[2px] px-7 text-center text-sm font-semibold leading-5 tracking-[0.7px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]",
                       BLACK_FRIDAY_THEME
@@ -228,7 +233,7 @@ export function HeroSection() {
                         : "bg-[#00aeef] text-white hover:bg-[#009bd6] hover:shadow-[0_12px_24px_rgba(0,174,239,0.22)]",
                     ].join(" ")}
                   >
-                    BOOK A FREE CONSULTATION
+                    {BLACK_FRIDAY_THEME ? BLACK_FRIDAY_CTA_LABEL : "BOOK A FREE CONSULTATION"}
                   </Link>
                   <Link
                     href={slide.href}
@@ -237,6 +242,11 @@ export function HeroSection() {
                     {slide.linkLabel}
                   </Link>
                 </div>
+                {BLACK_FRIDAY_THEME ? (
+                  <p className="mt-4 text-xs leading-5 text-white/85">
+                    Free quote · Free measuring &amp; fitting across Dublin
+                  </p>
+                ) : null}
               </div>
             </div>
           );
